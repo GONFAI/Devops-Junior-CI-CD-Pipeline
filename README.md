@@ -1,3 +1,5 @@
+![CI](https://github.com/GONFAI/devops-junior-ci-cd-pipeline/actions/workflows/ci.yml/badge.svg)
+
 # 🚀 DevOps Learning Project – From Zero to CI/CD
 
 Este repositorio documenta mi proceso de aprendizaje práctico en **DevOps**, desde los **fundamentos** hasta la implementación de **automatización, contenedores y pipelines CI/CD**, utilizando **herramientas gratuitas y open-source**.
