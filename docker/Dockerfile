@@ -1,21 +1,32 @@
+# =========================
+# Stage 1: Build & Test
+# =========================
+FROM python:3.10-slim AS builder
+
+WORKDIR /app
+
+COPY app/requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app .
+
+RUN pytest
+
+# =========================
+# Stage 2: Runtime
+# =========================
 FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copiar dependencias primero (cache)
-COPY app/requirements.txt requirements.txt
+COPY app/requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir flask
 
-# Copiar aplicación y tests
-COPY app app
-COPY tests tests
+COPY app .
 
-# Ejecutar tests durante el build
-RUN pytest
-
-# Exponer puerto
 EXPOSE 5000
 
-# Comando de arranque
-CMD ["python", "app/app.py"]
+CMD ["python", "app.py"]
+
