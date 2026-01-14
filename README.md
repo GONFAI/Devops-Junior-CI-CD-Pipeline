@@ -17,6 +17,21 @@ El objetivo principal es **aprender haciendo**, aplicando buenas prácticas real
 
 ---
 
+## 🧠 ¿Qué hace este proyecto?
+
+Este proyecto implementa un flujo DevOps real a partir de una aplicación sencilla, enfocándose en la automatización y validación continua:
+
+* Aplicación **Flask** con endpoints básicos:
+  * `/` → estado de la aplicación
+  * `/health` → health check
+* Pruebas automatizadas con **pytest**
+* Imagen **Docker multi-stage**
+* Ejecución de pruebas **durante el build de Docker**
+* Pipeline de **CI con GitHub Actions**
+* Ejecución local usando **Docker** y **Docker Compose**
+
+---
+
 ## 🧱 Alcance (Roadmap)
 
 Este proyecto se desarrollará por fases:
@@ -32,12 +47,14 @@ Este proyecto se desarrollará por fases:
 * Crear una aplicación simple
 * Dockerizar la aplicación
 * Ejecutarla localmente con Docker
+* Orquestación local con Docker Compose
 
 ### ⏳ Fase 3 – CI/CD
 
 * Pipeline con GitHub Actions
-* Build automático
-* Validación básica del proyecto
+* Ejecución automática de pruebas
+* Build automático de imagen Docker
+* Validación continua en cada push y pull request
 
 ### ⏳ Fase 4 – Cloud (opcional)
 
@@ -46,11 +63,26 @@ Este proyecto se desarrollará por fases:
 
 ---
 
+## 🔄 Flujo CI/CD Implementado
+
+1. Push o Pull Request al repositorio
+2. GitHub Actions ejecuta automáticamente:
+   * Checkout del código
+   * Instalación de dependencias
+   * Ejecución de pruebas automatizadas (pytest)
+   * Build de la imagen Docker (Buildx + cache)
+3. El pipeline falla si alguna validación no se cumple
+
+---
+
 ## 🛠️ Tecnologías (en progreso)
 
 * Git & GitHub
-* Docker
-* GitHub Actions
+* Docker (multi-stage builds)
+* Docker Compose
+* GitHub Actions (CI)
+* Python / Flask
+* Pytest
 * Bash / Shell scripting
 * Linux
 * Cloud (conceptos)
@@ -62,11 +94,28 @@ Este proyecto se desarrollará por fases:
 ```
 .
 ├── README.md
-├── app/                # Aplicación
-├── docker/             # Dockerfiles
-├── scripts/            # Scripts de automatización
-└── .github/workflows/  # Pipelines CI/CD
+├── app/ # Aplicación Flask
+├── tests/ # Pruebas automatizadas
+├── docker/ # Dockerfile multi-stage
+├── docker-compose.yml # Orquestación local
+├── scripts/ # Scripts de automatización
+└── .github/workflows/ # Pipelines CI/CD
 ```
+
+---
+
+## ▶️ Ejecución Local
+
+Ejecutar la aplicación usando Docker Compose:
+
+```bash
+docker compose up --build
+
+La aplicación quedará disponible en:
+
+http://localhost:5000
+
+http://localhost:5000/health
 
 ---
 
@@ -90,4 +139,4 @@ DevOps Junior en formación
 
 ## ⭐ Estado del Proyecto
 
-🟡 En progreso — construcción por etapas
+🟢 Funcional — en evolución para agregar despliegue y cloud
