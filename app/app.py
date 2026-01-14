@@ -1,10 +1,17 @@
+import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+APP_NAME = os.getenv("APP_NAME", "DevOps Junior App")
+APP_ENV = os.getenv("APP_ENV", "local")
+
 @app.route("/")
 def home():
-    return jsonify(message="DevOps Junior CI/CD Pipeline Running 🚀")
+    return jsonify(
+        message=f"{APP_NAME} Running 🚀",
+        environment=APP_ENV
+    )
 
 @app.route("/health")
 def health():
