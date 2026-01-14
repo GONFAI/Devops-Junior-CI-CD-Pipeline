@@ -28,7 +28,7 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest tests/
+        run: pytest
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
