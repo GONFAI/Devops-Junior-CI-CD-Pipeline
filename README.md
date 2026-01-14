@@ -107,14 +107,12 @@ Este proyecto se desarrollará por fases:
 ## ▶️ Ejecución Local
 
 Ejecutar la aplicación usando Docker Compose:
-
-```bash
+bash
 docker compose up --build
 
 La aplicación quedará disponible en:
 
 http://localhost:5000
-
 http://localhost:5000/health
 
 ---
