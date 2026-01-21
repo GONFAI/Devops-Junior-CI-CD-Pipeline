@@ -19,7 +19,7 @@ El objetivo principal es **aprender haciendo**, aplicando buenas prácticas real
 
 ## 🧠 ¿Qué hace este proyecto?
 
-Este proyecto implementa un flujo DevOps real a partir de una aplicación sencilla, enfocándose en la automatización y validación continua:
+Este proyecto implementa un flujo **DevOps** real a partir de una aplicación sencilla, enfocándose en la automatización y validación continua:
 
 * Aplicación **Flask** con endpoints básicos:
   * `/` → estado de la aplicación
@@ -29,6 +29,7 @@ Este proyecto implementa un flujo DevOps real a partir de una aplicación sencil
 * Ejecución de pruebas **durante el build de Docker**
 * Pipeline de **CI con GitHub Actions**
 * Ejecución local usando **Docker** y **Docker Compose**
+* Imagen publicada en **Docker Hub**
 
 ---
 
@@ -65,6 +66,15 @@ Este proyecto se desarrollará por fases:
 
 ## 🔄 Flujo CI/CD Implementado
 
+graph LR
+A[Code] --> B[GitHub]
+B --> C[GitHub Actions]
+C --> D[Tests]
+D --> E[Build Docker Image]
+E --> F[Push to Docker Hub]
+F --> G[Docker Compose Runtime]
+
+## Detalle del flujo:
 1. Push o Pull Request al repositorio
 2. GitHub Actions ejecuta automáticamente:
    * Checkout del código
