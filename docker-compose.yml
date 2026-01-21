@@ -3,9 +3,19 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    image: devops-junior-app
+    image: jgonzalez2025/devops-junior-app:latest
+    container_name: devops_junior_web
     ports:
       - "5000:5000"
     env_file:
       - .env
+    environment:
+      - ENV=production
+      - APP_NAME=DevOpsJuniorApp
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
